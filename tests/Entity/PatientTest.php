@@ -2,8 +2,8 @@
 
 namespace App\Tests\Entity;
 
-use PHPUnit\Framework\TestCase;
 use App\Entity\Patient;
+use PHPUnit\Framework\TestCase;
 
 class PatientTest extends TestCase
 {
@@ -25,4 +25,157 @@ class PatientTest extends TestCase
 
         $this->assertEquals("DUPOND", $nom, "getNom returns a bad value.");
     }
+    // -----------------------------------
+
+    public function testSetPrenom()
+    {
+        $patient = new Patient();
+        $patient->setPrenom("Pierre");
+        $prenom = $patient->getPrenom();
+
+        $this->assertEquals("Pierre", $prenom, "setPrenom returns a bad value.");
+    }
+
+    public function testGetPrenom()
+    {
+        $patient = new Patient();
+        $patient->setPrenom("Pierre");
+        $prenom = $patient->getPrenom();
+
+        $this->assertEquals("Pierre", $prenom, "getPrenom returns a bad value.");
+    }
+    // -----------------------------------
+
+    public function testSetDateNaissance()
+    {
+        $patient = new Patient();
+        $patient->setDateNaissance(date_create('1999-10-10'));
+        $datenaissance = $patient->getDateNaissance();
+
+        $this->assertEquals(date_create('1999-10-10'), $datenaissance, "setPrenom returns a bad value.");
+    }
+
+    public function testGetDateNaissance()
+    {
+        $patient = new Patient();
+        $patient->setDateNaissance(date_create('1999-10-10'));
+        $datenaissance = $patient->getDateNaissance();
+
+        $this->assertEquals(date_create('1999-10-10'), $datenaissance, "getPrenom returns a bad value.");
+    }
+    // -----------------------------------
+
+    public function testSetRue()
+    {
+        $patient = new Patient();
+        $patient->setRue("Rue de Paris");
+        $rue = $patient->getRue();
+
+        $this->assertEquals("Rue de Paris", $rue, "setRue returns a bad value.");
+    }
+
+    public function testGetRue()
+    {
+        $patient = new Patient();
+        $patient->setRue("Rue de Paris");
+        $rue = $patient->getRue();
+
+        $this->assertEquals("Rue de Paris", $rue, "getRue returns a bad value.");
+    }
+    // -----------------------------------
+
+    public function testSetNumeroRue()
+    {
+        $patient = new Patient();
+        $patient->setNumeroRue(18);
+        $numeroRue = $patient->getNumeroRue();
+
+        $this->assertEquals(18, $numeroRue, "setNumeroRue returns a bad value.");
+    }
+
+    public function testGetNumeroRue()
+    {
+        $patient = new Patient();
+        $patient->setNumeroRue(18);
+        $numeroRue = $patient->getNumeroRue();
+
+        $this->assertEquals(18, $numeroRue, "getNumeroRue returns a bad value.");
+    }
+    // -----------------------------------
+
+    public function testSetVille()
+    {
+        $patient = new Patient();
+        $patient->setVille("Paris");
+        $ville = $patient->getVille();
+
+        $this->assertEquals("Paris", $ville, "setVille returns a bad value.");
+    }
+
+    public function testGetVille()
+    {
+        $patient = new Patient();
+        $patient->setVille("Paris");
+        $ville = $patient->getVille();
+
+        $this->assertEquals("Paris", $ville, "getVille returns a bad value.");
+    }
+    // -----------------------------------
+
+    public function testSetCodePostal()
+    {
+        $patient = new Patient();
+        $patient->setCodePostal(75000);
+        $codePostal = $patient->getCodePostal();
+
+        $this->assertEquals(75000, $codePostal, "setCodePostal returns a bad value.");
+    }
+
+    public function testGetCodePostal()
+    {
+        $patient = new Patient();
+        $patient->setCodePostal(75000);
+        $codePostal = $patient->getCodePostal();
+
+        $this->assertEquals(75000, $codePostal, "getCodePostal returns a bad value.");
+    }
+    // -----------------------------------
+
+    public function testSetMail()
+    {
+        $patient = new Patient();
+        $patient->setMail("paris@centre.fr");
+        $mail = $patient->getMail();
+
+        $this->assertEquals("paris@centre.fr", $mail, "setMail returns a bad value.");
+    }
+
+    public function testGetMail()
+    {
+        $patient = new Patient();
+        $patient->setMail("paris@centre.fr");
+        $mail = $patient->getMail();
+
+        $this->assertEquals("paris@centre.fr", $mail, "getMail returns a bad value.");
+    }
+    // -----------------------------------
+
+    public function testSetTelephone()
+    {
+        $patient = new Patient();
+        $patient->setTelephone(0605040302);
+        $mail = $patient->getTelephone();
+
+        $this->assertEquals(0605040302, $mail, "setTelephone returns a bad value.");
+    }
+
+    public function testGetTelephone()
+    {
+        $patient = new Patient();
+        $patient->setTelephone(0605040302);
+        $mail = $patient->getTelephone();
+
+        $this->assertEquals(0605040302, $mail, "getTelephone returns a bad value.");
+    }
+    // -----------------------------------
 }
