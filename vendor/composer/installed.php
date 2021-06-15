@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '157d129a56170a9ffb54e8e327f7df279debc018',
+    'reference' => 'afbc4aabbb07e47e44ce665c5b374450020f71d4',
     'name' => '__root__',
   ),
   'versions' => 
@@ -18,7 +18,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '157d129a56170a9ffb54e8e327f7df279debc018',
+      'reference' => 'afbc4aabbb07e47e44ce665c5b374450020f71d4',
     ),
     'composer/package-versions-deprecated' => 
     array (
@@ -235,6 +235,15 @@
       array (
       ),
       'reference' => '6cccbddfcfc742eb02158d6137ca5687d92cee32',
+    ),
+    'liip/test-fixtures-bundle' => 
+    array (
+      'pretty_version' => '1.10.0',
+      'version' => '1.10.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '6931a3e78814e7cd2c5e2c2fc2239933e9680fbb',
     ),
     'monolog/monolog' => 
     array (
@@ -624,12 +633,12 @@
     ),
     'sebastian/type' => 
     array (
-      'pretty_version' => '2.3.2',
-      'version' => '2.3.2.0',
+      'pretty_version' => '2.3.4',
+      'version' => '2.3.4.0',
       'aliases' => 
       array (
       ),
-      'reference' => '0d1c587401514d17e8f9258a27e23527cb1b06c1',
+      'reference' => 'b8cd8a1c753c90bc1a0f5372170e3e489136f914',
     ),
     'sebastian/version' => 
     array (

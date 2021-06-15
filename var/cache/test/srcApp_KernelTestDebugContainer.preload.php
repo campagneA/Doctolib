@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/Container4ncf1Kj/srcApp_KernelTestDebugContainer.php';
+require __DIR__.'/ContainerFLtrKu4/srcApp_KernelTestDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -22,6 +22,8 @@ $classes[] = 'Doctrine\Bundle\DoctrineBundle\DoctrineBundle';
 $classes[] = 'Doctrine\Bundle\MigrationsBundle\DoctrineMigrationsBundle';
 $classes[] = 'Symfony\Bundle\SecurityBundle\SecurityBundle';
 $classes[] = 'Twig\Extra\TwigExtraBundle\TwigExtraBundle';
+$classes[] = 'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle';
+$classes[] = 'Liip\TestFixturesBundle\LiipTestFixturesBundle';
 $classes[] = 'Symfony\Component\HttpClient\TraceableHttpClient';
 $classes[] = 'Symfony\Contracts\HttpClient\HttpClientInterface';
 $classes[] = 'Symfony\Component\HttpClient\HttpClient';
@@ -29,7 +31,14 @@ $classes[] = 'Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser';
 $classes[] = 'Symfony\Bundle\FrameworkBundle\EventListener\ResolveControllerNameSubscriber';
 $classes[] = 'Symfony\Component\HttpFoundation\RequestMatcher';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
+$classes[] = 'App\DataFixtures\AppFixtures';
+$classes[] = 'App\DataFixtures\Cabinet';
+$classes[] = 'App\DataFixtures\Doctor';
+$classes[] = 'App\DataFixtures\Patient';
+$classes[] = 'App\DataFixtures\RendezVous';
+$classes[] = 'App\DataFixtures\Speciality';
 $classes[] = 'App\Repository\PatientRepository';
+$classes[] = 'App\Repository\RendezVousRepository';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Registry';
 $classes[] = 'Doctrine\DBAL\Tools\Console\Command\RunSqlCommand';
@@ -151,6 +160,9 @@ $classes[] = 'Symfony\Bridge\Doctrine\Logger\DbalLogger';
 $classes[] = 'Doctrine\DBAL\Logging\LoggerChain';
 $classes[] = 'Doctrine\DBAL\Logging\DebugStack';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\EnsureProductionSettingsDoctrineCommand';
+$classes[] = 'Doctrine\Bundle\FixturesBundle\Loader\SymfonyFixturesLoader';
+$classes[] = 'Doctrine\Bundle\FixturesBundle\Purger\ORMPurgerFactory';
+$classes[] = 'Doctrine\Bundle\FixturesBundle\Command\LoadDataFixturesDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\ConvertMappingDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\ImportMappingDoctrineCommand';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Command\Proxy\InfoDoctrineCommand';
@@ -237,6 +249,15 @@ $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\EventListener\IsGrantedListener
 $classes[] = 'Symfony\Component\HttpKernel\HttpKernel';
 $classes[] = 'Symfony\Component\Translation\IdentityTranslator';
 $classes[] = 'App\Kernel';
+$classes[] = 'Liip\TestFixturesBundle\Services\DatabaseToolCollection';
+$classes[] = 'Liip\TestFixturesBundle\Services\FixturesLoaderFactory';
+$classes[] = 'Liip\TestFixturesBundle\Services\DatabaseBackup\MongodbDatabaseBackup';
+$classes[] = 'Liip\TestFixturesBundle\Services\DatabaseBackup\MysqlDatabaseBackup';
+$classes[] = 'Liip\TestFixturesBundle\Services\DatabaseBackup\SqliteDatabaseBackup';
+$classes[] = 'Liip\TestFixturesBundle\Services\DatabaseTools\MongoDBDatabaseTool';
+$classes[] = 'Liip\TestFixturesBundle\Services\DatabaseTools\ORMDatabaseTool';
+$classes[] = 'Liip\TestFixturesBundle\Services\DatabaseTools\ORMSqliteDatabaseTool';
+$classes[] = 'Liip\TestFixturesBundle\Services\DatabaseTools\PHPCRDatabaseTool';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\LocaleAwareListener';
 $classes[] = 'Symfony\Component\HttpKernel\EventListener\LocaleListener';
 $classes[] = 'Symfony\Component\Mailer\DataCollector\MessageDataCollector';
