@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CabinetRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=CabinetRepository::class)
@@ -33,7 +34,13 @@ class Cabinet
     private $city;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\Column(type="integer", length=5)
+     *
+     * @Assert\Regex(
+     *      pattern="/[0-9]{5}/",
+     *      match = true,
+     *      message = "CP non valide !"
+     * )
      */
     private $postal;
 

@@ -4,8 +4,9 @@ namespace App\Tests\Entity;
 
 use PHPUnit\Framework\TestCase;
 use App\Entity\Cabinet;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class CabinetTest extends TestCase
+class CabinetTest extends KernelTestCase
 {
 
     public $street;
@@ -69,7 +70,7 @@ class CabinetTest extends TestCase
     /**
      * Get the value of city
      */
-    public function testetCity()
+    public function testGetCity()
     {
         $city = new Cabinet();
         $city->setCity("Paris");
@@ -98,10 +99,10 @@ class CabinetTest extends TestCase
     public function testGetPostal()
     {
         $postal = new Cabinet();
-        $postal->setPostal("75000");
+        $postal->setPostal(75000);
         $postalCity = $postal->getPostal();
 
-        $this->assertEquals("75000", $postalCity, "setNom returns a bad value.");
+        $this->assertEquals(75000, $postalCity, "setNom returns a bad value.");
     }
 
     /**
@@ -112,9 +113,35 @@ class CabinetTest extends TestCase
     public function testSetPostal()
     {
         $postal = new Cabinet();
-        $postal->setPostal("75000");
+        $postal->setPostal(75000);
         $postalCity = $postal->getPostal();
 
-        $this->assertEquals("75000", $postalCity, "setNom returns a bad value.");
+        $this->assertEquals(75000, $postalCity, "setNom returns a bad value.");
+    }
+
+    public function testPostalIsInValid()
+    {
+        $kernel = self::bootKernel();
+        $validator = $kernel->getContainer()->get('validator');
+        $postal = new Cabinet();
+        $postal->setPostal(750);
+        $errors = $validator->validate($postal);
+
+        // $this->assertCount(1, $errors, "Une erreur est attendue car moins de 5 chars");
+        $this->assertEquals(1, count($errors), "Une erreur est attendue car moins de 5 chars");
+        $this->assertEquals("CP non valide !", $errors[0]->getMessage());
+    }
+
+    public function testPostalIsValid()
+    {
+        $kernel = self::bootKernel();
+        $validator = $kernel->getContainer()->get('validator');
+        $postal = new Cabinet();
+        $postal->setPostal(75000);
+        $errors = $validator->validate($postal);
+
+        // $this->assertCount(0, $errors, "Une erreur est attendue car plus de 5 chars");
+        $this->assertEquals(0, count($errors), "Une erreur est attendue car plus de 5 chars");
+        // $this->assertEquals("Your name must be at least 3 characters long", $errors[0]->getMessage());
     }
 }
