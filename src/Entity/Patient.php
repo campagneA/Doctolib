@@ -2,8 +2,9 @@
 
 namespace App\Entity;
 
-use App\Repository\PatientRepository;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\PatientRepository;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=PatientRepository::class)
@@ -24,11 +25,25 @@ class Patient
 
     /**
      * @ORM\Column(type="string", length=50)
+     * 
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Your name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     *      * )
      */
     private $prenom;
 
     /**
      * @ORM\Column(type="date")
+     * 
+     * @Assert\Regex(
+     *      pattern = "\([12]\d{3}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01]))\",
+     *      match = true,
+     *      message = "Le format de votre date de naissance n'est pas conforme !"
+     * )
      */
     private $dateNaissance;
 
