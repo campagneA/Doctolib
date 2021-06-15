@@ -4,8 +4,9 @@ namespace App\Tests\Entity;
 
 use App\Entity\Patient;
 use PHPUnit\Framework\TestCase;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-class PatientTest extends TestCase
+class PatientTest extends KernelTestCase
 {
 
     public function testSetNom()
@@ -178,4 +179,31 @@ class PatientTest extends TestCase
         $this->assertEquals(0605040302, $mail, "getTelephone returns a bad value.");
     }
     // -----------------------------------
+
+    public function testNomIsInvalid()
+    {
+        $kernel = self::bootKernel();
+        $validator = $kernel->getContainer()->get('validator');
+        $patient = new Patient();
+        $patient->setNom("PA");
+        $errors = $validator->validate($patient);
+
+        $this->assertCount(1, $errors, "Une erreur est attendue car moins de 3 chars");
+        $this->assertEquals(1, count($errors), "Une erreur est attendue car moins de 3 chars");
+        $this->assertEquals("Your name must be at least 3 characters long", $errors[0]->getMessage());
+    }
+
+    // -----------------------------------
+
+    public function testNomIsValid()
+    {
+        $kernel = self::bootKernel();
+        $validator = $kernel->getContainer()->get('validator');
+        $patient = new Patient();
+        $patient->setNom("PAVART");
+        $errors = $validator->validate($patient);
+
+        $this->assertCount(0, $errors, "Une Erreur est attendue car plus de 3 chars");
+        // $this->assertEquals(0, count($errors), "Une Erreur est attendue car plus de 3 chars");
+    }
 }
