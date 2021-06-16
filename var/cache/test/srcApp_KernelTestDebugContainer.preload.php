@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerFLtrKu4/srcApp_KernelTestDebugContainer.php';
+require __DIR__.'/ContainerT3YZQMD/srcApp_KernelTestDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -32,11 +32,11 @@ $classes[] = 'Symfony\Bundle\FrameworkBundle\EventListener\ResolveControllerName
 $classes[] = 'Symfony\Component\HttpFoundation\RequestMatcher';
 $classes[] = 'Symfony\Component\DependencyInjection\ServiceLocator';
 $classes[] = 'App\DataFixtures\AppFixtures';
-$classes[] = 'App\DataFixtures\Cabinet';
-$classes[] = 'App\DataFixtures\Doctor';
-$classes[] = 'App\DataFixtures\Patient';
-$classes[] = 'App\DataFixtures\RendezVous';
-$classes[] = 'App\DataFixtures\Speciality';
+$classes[] = 'App\DataFixtures\CabinetFixture';
+$classes[] = 'App\DataFixtures\DoctorFixture';
+$classes[] = 'App\DataFixtures\PatientFixture';
+$classes[] = 'App\DataFixtures\RendezVousFixture';
+$classes[] = 'App\DataFixtures\SpecialityFixture';
 $classes[] = 'App\Repository\PatientRepository';
 $classes[] = 'App\Repository\RendezVousRepository';
 $classes[] = 'Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider';

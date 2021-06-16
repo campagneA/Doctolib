@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CabinetRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -43,6 +45,16 @@ class Cabinet
      * )
      */
     private $postal;
+
+    /**
+     * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Cabinet_Id")
+     */
+    private $rendezVousId;
+
+    public function __construct()
+    {
+        $this->rendezVousId = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -93,6 +105,36 @@ class Cabinet
     public function setPostal(int $postal): self
     {
         $this->postal = $postal;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RendezVous[]
+     */
+    public function getRendezVousId(): Collection
+    {
+        return $this->rendezVousId;
+    }
+
+    public function addRendezVousId(RendezVous $rendezVousId): self
+    {
+        if (!$this->rendezVousId->contains($rendezVousId)) {
+            $this->rendezVousId[] = $rendezVousId;
+            $rendezVousId->setCabinetId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRendezVousId(RendezVous $rendezVousId): self
+    {
+        if ($this->rendezVousId->removeElement($rendezVousId)) {
+            // set the owning side to null (unless already changed)
+            if ($rendezVousId->getCabinetId() === $this) {
+                $rendezVousId->setCabinetId(null);
+            }
+        }
 
         return $this;
     }

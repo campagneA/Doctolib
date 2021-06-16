@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\PatientRepository;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -20,12 +22,18 @@ class Patient
 
     /**
      * @ORM\Column(type="string", length=50)
+     * @Assert\Length(
+     *      min = 3,
+     *      max = 50,
+     *      minMessage = "Your name must be at least {{ limit }} characters long",
+     *      maxMessage = "Your name cannot be longer than {{ limit }} characters",
+     *      allowEmptyString = false
+     *      * )
      */
     private $nom;
 
     /**
      * @ORM\Column(type="string", length=50)
-     * 
      * @Assert\Length(
      *      min = 3,
      *      max = 50,
@@ -76,6 +84,16 @@ class Patient
      * @ORM\Column(type="integer")
      */
     private $telephone;
+
+    /**
+     * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Patient_Id")
+     */
+    private $rendezVousId;
+
+    public function __construct()
+    {
+        $this->rendezVousId = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -186,6 +204,36 @@ class Patient
     public function setTelephone(int $telephone): self
     {
         $this->telephone = $telephone;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|RendezVous[]
+     */
+    public function getRendezVousId(): Collection
+    {
+        return $this->rendezVousId;
+    }
+
+    public function addRendezVousId(RendezVous $rendezVousId): self
+    {
+        if (!$this->rendezVousId->contains($rendezVousId)) {
+            $this->rendezVousId[] = $rendezVousId;
+            $rendezVousId->setPatientId($this);
+        }
+
+        return $this;
+    }
+
+    public function removeRendezVousId(RendezVous $rendezVousId): self
+    {
+        if ($this->rendezVousId->removeElement($rendezVousId)) {
+            // set the owning side to null (unless already changed)
+            if ($rendezVousId->getPatientId() === $this) {
+                $rendezVousId->setPatientId(null);
+            }
+        }
 
         return $this;
     }

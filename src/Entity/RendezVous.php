@@ -23,19 +23,22 @@ class RendezVous
     private $date;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="rendezVousId")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $patient_id;
+    private $Patient_Id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Doctor::class, inversedBy="RendezVousId")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $doctor_id;
+    private $Doctor_Id;
 
     /**
-     * @ORM\Column(type="integer")
+     * @ORM\ManyToOne(targetEntity=Cabinet::class, inversedBy="rendezVousId")
+     * @ORM\JoinColumn(nullable=false)
      */
-    private $cabinet_id;
+    private $Cabinet_Id;
 
     public function getId(): ?int
     {
@@ -54,38 +57,38 @@ class RendezVous
         return $this;
     }
 
-    public function getPatientId(): ?int
+    public function getPatientId(): ?Patient
     {
-        return $this->patient_id;
+        return $this->Patient_Id;
     }
 
-    public function setPatientId(int $patient_id): self
+    public function setPatientId(?Patient $Patient_Id): self
     {
-        $this->patient_id = $patient_id;
+        $this->Patient_Id = $Patient_Id;
 
         return $this;
     }
 
-    public function getDoctorId(): ?int
+    public function getDoctorId(): ?Doctor
     {
-        return $this->docteur_id;
+        return $this->Doctor_Id;
     }
 
-    public function setDoctorId(int $docteur_id): self
+    public function setDoctorId(?Doctor $Doctor_Id): self
     {
-        $this->docteur_id = $docteur_id;
+        $this->Doctor_Id = $Doctor_Id;
 
         return $this;
     }
 
-    public function getCabinetId(): ?int
+    public function getCabinetId(): ?Cabinet
     {
-        return $this->cabinet_id;
+        return $this->Cabinet_Id;
     }
 
-    public function setCabinetId(int $cabinet_id): self
+    public function setCabinetId(?Cabinet $Cabinet_Id): self
     {
-        $this->cabinet_id = $cabinet_id;
+        $this->Cabinet_Id = $Cabinet_Id;
 
         return $this;
     }

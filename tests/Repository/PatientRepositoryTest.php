@@ -2,7 +2,7 @@
 
 namespace App\Tests\Repository;
 
-use App\DataFixtures\PatientFixtures;
+use App\DataFixtures\PatientFixture;
 use App\Repository\PatientRepository;
 use Liip\TestFixturesBundle\Test\FixturesTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -15,9 +15,9 @@ class PatientRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
         $repository = self::$container->get(PatientRepository::class);
-        $this->loadFixtures([PatientFixtures::class]);
+        $this->loadFixtures([PatientFixture::class]);
         $patients = $repository->findAll();
 
-        $this->assertCount(0, $patients);
+        $this->assertCount(5, $patients);
     }
 }
