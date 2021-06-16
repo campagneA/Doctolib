@@ -2,9 +2,11 @@
 
 namespace App\Tests\Entity;
 
+use App\Entity\Doctor;
+use App\Entity\Cabinet;
 use App\Entity\Patient;
-use PHPUnit\Framework\TestCase;
 use App\Entity\RendezVous;
+use PHPUnit\Framework\TestCase;
 
 class rendezVousTest extends TestCase
 {
@@ -30,57 +32,63 @@ class rendezVousTest extends TestCase
     public function testSetPatientId()
     {
         $patient = new RendezVous();
-        $patient->setPatientId();
+        $pat = new Patient();
+        $patient->setPatientId($pat);
         $patient_id = $patient->getPatientId();
 
-        $this->assertEquals(1, $patient_id, "setPatientId returns a bad value.");
+        $this->assertEquals($pat, $patient_id, "setPatientId returns a bad value.");
     }
 
     public function testGetPatientId()
     {
         $patient = new RendezVous();
-        $patient->setPatientId(1);
+        $pat = new Patient();
+        $patient->setPatientId($pat);
         $patient_id = $patient->getPatientId();
 
-        $this->assertEquals(0, $patient_id, "getPatientId returns a bad value.");
+        $this->assertEquals($pat, $patient_id, "getPatientId returns a bad value.");
     }
     // -----------------------------------
 
     public function testSetDocteurId()
     {
         $patient = new RendezVous();
-        $patient->setDoctorId(null);
+        $doc = new Doctor();
+        $patient->setDoctorId($doc);
         $docteur_id = $patient->getDoctorId();
 
-        $this->assertEquals(1, $docteur_id, "setDoctorId returns a bad value.");
+        $this->assertEquals($doc, $docteur_id, "setDoctorId returns a bad value.");
     }
 
     public function testGetDocteurId()
     {
         $patient = new RendezVous();
-        $patient->setDoctorId(null);
+        $doc = new Doctor();
+        $patient->setDoctorId($doc);
         $docteur_id = $patient->getDoctorId();
 
-        $this->assertEquals(1, $docteur_id, "getDoctorId returns a bad value.");
+        $this->assertEquals($doc, $docteur_id, "getDoctorId returns a bad value.");
     }
     // -----------------------------------
 
     public function testSetCabinetId()
     {
         $patient = new RendezVous();
-        $patient->setCabinetId(null);
+        $cab = new Cabinet();
+        $patient->setCabinetId($cab);
         $cabinet_id = $patient->getCabinetId();
 
-        $this->assertEquals(1, $cabinet_id, "setCabinetId returns a bad value.");
+        $this->assertEquals($cab, $cabinet_id, "setCabinetId returns a bad value.");
     }
 
     public function testGetCabinetId()
     {
         $patient = new RendezVous();
-        $patient->setCabinetId(null);
+        $cab = new Cabinet();
+        $patient->setCabinetId($cab);
         $cabinet_id = $patient->getCabinetId();
 
-        $this->assertEquals(1, $cabinet_id, "getCabinetId returns a bad value.");
+        $this->assertEquals($cab, $cabinet_id, "getCabinetId returns a bad value.");
     }
     // -----------------------------------
 }
