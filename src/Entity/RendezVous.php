@@ -26,19 +26,19 @@ class RendezVous
      * @ORM\ManyToOne(targetEntity=Patient::class, inversedBy="rendezVousId")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Patient_Id;
+    private $Patient;
 
     /**
      * @ORM\ManyToOne(targetEntity=Doctor::class, inversedBy="RendezVousId")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Doctor_Id;
+    private $Doctor;
 
     /**
      * @ORM\ManyToOne(targetEntity=Cabinet::class, inversedBy="rendezVousId")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $Cabinet_Id;
+    private $Cabinet;
 
     public function getId(): ?int
     {
@@ -59,36 +59,36 @@ class RendezVous
 
     public function getPatientId(): ?Patient
     {
-        return $this->Patient_Id;
+        return $this->Patient;
     }
 
-    public function setPatientId(?Patient $Patient_Id): self
+    public function setPatientId(?Patient $Patient): self
     {
-        $this->Patient_Id = $Patient_Id;
+        $this->Patient = $Patient;
 
         return $this;
     }
 
     public function getDoctorId(): ?Doctor
     {
-        return $this->Doctor_Id;
+        return $this->Doctor;
     }
 
-    public function setDoctorId(?Doctor $Doctor_Id): self
+    public function setDoctorId(?Doctor $Doctor): self
     {
-        $this->Doctor_Id = $Doctor_Id;
+        $this->Doctor = $Doctor;
 
         return $this;
     }
 
     public function getCabinetId(): ?Cabinet
     {
-        return $this->Cabinet_Id;
+        return $this->Cabinet;
     }
 
-    public function setCabinetId(?Cabinet $Cabinet_Id): self
+    public function setCabinetId(?Cabinet $Cabinet): self
     {
-        $this->Cabinet_Id = $Cabinet_Id;
+        $this->Cabinet = $Cabinet;
 
         return $this;
     }

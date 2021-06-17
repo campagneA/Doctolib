@@ -34,9 +34,15 @@ class Doctor
      */
     private $RendezVousId;
 
+    /**
+     * @ORM\ManyToMany(targetEntity=Speciality::class, inversedBy="doctors")
+     */
+    private $speciality;
+
     public function __construct()
     {
         $this->RendezVousId = new ArrayCollection();
+        $this->speciality = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -94,6 +100,30 @@ class Doctor
                 $rendezVousId->setDoctorId(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Speciality[]
+     */
+    public function getSpeciality(): Collection
+    {
+        return $this->speciality;
+    }
+
+    public function addSpeciality(Speciality $speciality): self
+    {
+        if (!$this->speciality->contains($speciality)) {
+            $this->speciality[] = $speciality;
+        }
+
+        return $this;
+    }
+
+    public function removeSpeciality(Speciality $speciality): self
+    {
+        $this->speciality->removeElement($speciality);
 
         return $this;
     }

@@ -4,8 +4,8 @@
 
 if (\class_exists(\ContainerGm7xLKT\srcApp_KernelTestDebugContainer::class, false)) {
     // no-op
-} elseif (!include __DIR__ . '/ContainerGm7xLKT/srcApp_KernelTestDebugContainer.php') {
-    touch(__DIR__ . '/ContainerGm7xLKT.legacy');
+} elseif (!include __DIR__.'/ContainerGm7xLKT/srcApp_KernelTestDebugContainer.php') {
+    touch(__DIR__.'/ContainerGm7xLKT.legacy');
 
     return;
 }
@@ -16,6 +16,6 @@ if (!\class_exists(srcApp_KernelTestDebugContainer::class, false)) {
 
 return new \ContainerGm7xLKT\srcApp_KernelTestDebugContainer([
     'container.build_hash' => 'Gm7xLKT',
-    'container.build_id' => '3fadf588',
-    'container.build_time' => 1623846688,
-], __DIR__ . \DIRECTORY_SEPARATOR . 'ContainerGm7xLKT');
+    'container.build_id' => 'b8967a7b',
+    'container.build_time' => 1623914187,
+], __DIR__.\DIRECTORY_SEPARATOR.'ContainerGm7xLKT');
