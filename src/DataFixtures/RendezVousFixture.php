@@ -25,7 +25,8 @@ class RendezVousFixture extends Fixture
             ->setVille("Lille")
             ->setCodePostal(59000)
             ->setMail("kiki@kuku.fr")
-            ->setTelephone(0606060606);
+            ->setTelephone(0606060606)
+            ->setPassWord("toto");
 
         $manager->persist($patient);
 

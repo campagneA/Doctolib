@@ -24,6 +24,7 @@ class PatientFixture extends Fixture
             $patient->setNumeroRue($i);
             $patient->setVille('Ville ' . $i);
             $patient->setTelephone(060606060 . $i);
+            $patient->setPassWord("toto" . $i);
 
             $manager->persist($patient);
         }
