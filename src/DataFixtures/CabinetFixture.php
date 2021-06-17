@@ -20,6 +20,7 @@ class CabinetFixture extends Fixture
             $cabinet->setNumber($i);
             $cabinet->setPostal(5900 . $i);
             $cabinet->setCity('Ville ' . $i);
+            $cabinet->setName('St Pierre' . $i);
 
             $manager->persist($cabinet);
         }

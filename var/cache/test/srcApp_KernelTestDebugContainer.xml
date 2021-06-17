@@ -340,6 +340,10 @@
     <service id="App\DataFixtures\SpecialityFixture" class="App\DataFixtures\SpecialityFixture" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
     </service>
+    <service id="App\Repository\DoctorRepository" class="App\Repository\DoctorRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\PatientRepository" class="App\Repository\PatientRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -1022,6 +1026,7 @@
         <argument key="App\DataFixtures\PatientFixture" type="service_closure" id="App\DataFixtures\PatientFixture" on-invalid="ignore_uninitialized"/>
         <argument key="App\DataFixtures\RendezVousFixture" type="service_closure" id="App\DataFixtures\RendezVousFixture" on-invalid="ignore_uninitialized"/>
         <argument key="App\DataFixtures\SpecialityFixture" type="service_closure" id="App\DataFixtures\SpecialityFixture" on-invalid="ignore_uninitialized"/>
+        <argument key="App\Repository\DoctorRepository" type="service_closure" id="App\Repository\DoctorRepository" on-invalid="ignore_uninitialized"/>
         <argument key="App\Repository\PatientRepository" type="service_closure" id="App\Repository\PatientRepository" on-invalid="ignore_uninitialized"/>
         <argument key="App\Repository\RendezVousRepository" type="service_closure" id="App\Repository\RendezVousRepository" on-invalid="ignore_uninitialized"/>
         <argument key="Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider" type="service_closure" id="Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider" on-invalid="ignore_uninitialized"/>
@@ -4234,7 +4239,7 @@
       <factory class="Doctrine\ORM\EntityManager" method="create"/>
     </service>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory" public="false">
-      <argument type="service" id=".service_locator.Dk4biQj"/>
+      <argument type="service" id=".service_locator.GUjoJLQ"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -5278,6 +5283,8 @@
     <service id=".abstract.instanceof.App\DataFixtures\RendezVousFixture" class="App\DataFixtures\RendezVousFixture" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\FixturesBundle\ORMFixtureInterface.0.App\DataFixtures\SpecialityFixture" class="App\DataFixtures\SpecialityFixture" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\DataFixtures\SpecialityFixture" class="App\DataFixtures\SpecialityFixture" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\DoctorRepository" class="App\Repository\DoctorRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\DoctorRepository" class="App\Repository\DoctorRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PatientRepository" class="App\Repository\PatientRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PatientRepository" class="App\Repository\PatientRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\RendezVousRepository" class="App\Repository\RendezVousRepository" autowire="true" abstract="true"/>
@@ -5505,9 +5512,10 @@
       <argument type="service" id="cache.doctrine.orm.default.result"/>
       <factory class="Doctrine\Common\Cache\Psr6\DoctrineProvider" method="wrap"/>
     </service>
-    <service id=".service_locator.Dk4biQj" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.GUjoJLQ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Repository\DoctorRepository" type="service_closure" id="App\Repository\DoctorRepository"/>
         <argument key="App\Repository\PatientRepository" type="service_closure" id="App\Repository\PatientRepository"/>
         <argument key="App\Repository\RendezVousRepository" type="service_closure" id="App\Repository\RendezVousRepository"/>
       </argument>

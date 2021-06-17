@@ -39,7 +39,8 @@ class RendezVousFixture extends Fixture
             ->setStreet("Boulevard")
             ->setNumber(999)
             ->setCity("Roubaix")
-            ->setPostal(59999);
+            ->setPostal(59999)
+            ->setName('St Thomas');
 
         $manager->persist($cabinet);
 

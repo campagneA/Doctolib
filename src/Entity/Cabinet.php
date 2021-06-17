@@ -51,6 +51,11 @@ class Cabinet
      */
     private $rendezVousId;
 
+    /**
+     * @ORM\Column(type="string", length=100)
+     */
+    private $name;
+
     public function __construct()
     {
         $this->rendezVousId = new ArrayCollection();
@@ -135,6 +140,18 @@ class Cabinet
                 $rendezVousId->setCabinetId(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
 
         return $this;
     }
