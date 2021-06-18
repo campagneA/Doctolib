@@ -9,13 +9,28 @@ class RdvService
 {
     public function __construct(RendezVousRepository $repository, EntityManagerInterface $entityManager)
     {
-        $this->RdvRepository = $repository;
+        $this->RendezVousRepository = $repository;
         $this->manager = $entityManager;
     }
 
 
-    public function FindBy(array $tab)
+    public function findBy(array $tab)
     {
-        return $this->RdvRepository->testFindOneBy($tab);
+        return $this->RendezVousRepository->findBy($tab);
+    }
+
+    public function findAll()
+    {
+        return $this->RendezVousRepository->findAll();
+    }
+
+    public function find($id)
+    {
+        return $this->RendezVousRepository->find($id);
+    }
+
+    public function findOneBy(array $tab)
+    {
+        return $this->RendezVousRepository->findOneBy($tab);
     }
 }

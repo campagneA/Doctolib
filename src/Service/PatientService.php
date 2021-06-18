@@ -17,13 +17,23 @@ class PatientService
     }
 
 
-    public function FindBy()
+    public function findBy(array $tab)
     {
-        return $this->PatientRepository->testFindOneBy();
+        return $this->PatientRepository->findBy($tab);
     }
 
-    public function Find($id)
+    public function findAll()
     {
-        return $this->PatientRepository->testFindOneBy($id);
+        return $this->PatientRepository->findAll();
+    }
+
+    public function find($id)
+    {
+        return $this->PatientRepository->find($id);
+    }
+
+    public function findOneBy(array $tab)
+    {
+        return $this->PatientRepository->findOneBy($tab);
     }
 }

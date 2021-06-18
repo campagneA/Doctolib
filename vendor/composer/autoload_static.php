@@ -118,6 +118,10 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
             'PhpParser\\' => 10,
             'PackageVersions\\' => 16,
         ),
+        'N' => 
+        array (
+            'Negotiation\\' => 12,
+        ),
         'M' => 
         array (
             'Monolog\\' => 8,
@@ -128,6 +132,10 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
             'Laminas\\ZendFrameworkBridge\\' => 28,
             'Laminas\\EventManager\\' => 21,
             'Laminas\\Code\\' => 13,
+        ),
+        'F' => 
+        array (
+            'FOS\\RestBundle\\' => 15,
         ),
         'E' => 
         array (
@@ -480,6 +488,10 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
         array (
             0 => __DIR__ . '/..' . '/composer/package-versions-deprecated/src/PackageVersions',
         ),
+        'Negotiation\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/willdurand/negotiation/src/Negotiation',
+        ),
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
@@ -499,6 +511,10 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
         'Laminas\\Code\\' => 
         array (
             0 => __DIR__ . '/..' . '/laminas/laminas-code/src',
+        ),
+        'FOS\\RestBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/friendsofsymfony/rest-bundle',
         ),
         'Egulias\\EmailValidator\\' => 
         array (
@@ -585,6 +601,16 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'J' => 
+        array (
+            'JsonpCallbackValidator' => 
+            array (
+                0 => __DIR__ . '/..' . '/willdurand/jsonp-callback-validator/src',
+            ),
         ),
     );
 
@@ -1231,6 +1257,7 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit8f6385613ca4fdd0304678050b126a62::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit8f6385613ca4fdd0304678050b126a62::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit8f6385613ca4fdd0304678050b126a62::$prefixesPsr0;
             $loader->classMap = ComposerStaticInit8f6385613ca4fdd0304678050b126a62::$classMap;
 
         }, null, ClassLoader::class);

@@ -7,7 +7,7 @@ use Doctrine\ORM\EntityManagerInterface;
 
 class DocteurService
 {
-    private $DocteurRepository;
+    private $DoctorRepository;
     private $manager;
 
     public function __construct(DoctorRepository $repository, EntityManagerInterface $entityManager)
@@ -17,12 +17,23 @@ class DocteurService
     }
 
 
-    public function FindBy(array $tab)
+    public function findBy(array $tab)
     {
-        return $this->DocteurRepository->testFindOneBy($tab);
+        return $this->DoctorRepository->findBy($tab);
     }
-    public function FindAll()
+
+    public function findAll()
     {
-        return $this->DocteurRepository->testFindOneBy();
+        return $this->DoctorRepository->findAll();
+    }
+
+    public function find($id)
+    {
+        return $this->DoctorRepository->find($id);
+    }
+
+    public function findOneBy(array $tab)
+    {
+        return $this->DoctorRepository->findOneBy($tab);
     }
 }

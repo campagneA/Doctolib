@@ -352,6 +352,12 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Service\DoctorService" class="App\Service\DoctorService" autowire="true" autoconfigure="true"/>
+    <service id="App\Service\PatientService" class="App\Service\PatientService" autowire="true" autoconfigure="true">
+      <argument type="service" id="App\Repository\PatientRepository"/>
+      <argument type="service" id="doctrine.orm.default_entity_manager"/>
+    </service>
+    <service id="App\Service\RendezVousService" class="App\Service\RendezVousService" autowire="true" autoconfigure="true"/>
     <service id=".legacy_controller_name_converter" class="Symfony\Bundle\FrameworkBundle\Controller\ControllerNameParser" public="false">
       <tag name="monolog.logger" channel="request"/>
       <argument type="service" id="kernel"/>
@@ -1029,6 +1035,7 @@
         <argument key="App\Repository\DoctorRepository" type="service_closure" id="App\Repository\DoctorRepository" on-invalid="ignore_uninitialized"/>
         <argument key="App\Repository\PatientRepository" type="service_closure" id="App\Repository\PatientRepository" on-invalid="ignore_uninitialized"/>
         <argument key="App\Repository\RendezVousRepository" type="service_closure" id="App\Repository\RendezVousRepository" on-invalid="ignore_uninitialized"/>
+        <argument key="App\Service\PatientService" type="service_closure" id="App\Service\PatientService" on-invalid="ignore_uninitialized"/>
         <argument key="Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider" type="service_closure" id="Doctrine\Bundle\DoctrineBundle\Dbal\ManagerRegistryAwareConnectionProvider" on-invalid="ignore_uninitialized"/>
         <argument key="Doctrine\Common\Annotations\Reader" type="service_closure" id="annotations.cached_reader" on-invalid="ignore_uninitialized"/>
         <argument key="Doctrine\Common\Persistence\ManagerRegistry" type="service_closure" id="doctrine" on-invalid="ignore_uninitialized"/>
