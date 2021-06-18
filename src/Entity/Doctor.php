@@ -30,7 +30,7 @@ class Doctor
     private $lastName;
 
     /**
-     * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Doctor_Id")
+     * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Doctor")
      */
     private $RendezVousId;
 
@@ -86,7 +86,7 @@ class Doctor
     {
         if (!$this->RendezVousId->contains($rendezVousId)) {
             $this->RendezVousId[] = $rendezVousId;
-            $rendezVousId->setDoctorId($this);
+            $rendezVousId->setDoctor($this);
         }
 
         return $this;
@@ -96,8 +96,8 @@ class Doctor
     {
         if ($this->RendezVousId->removeElement($rendezVousId)) {
             // set the owning side to null (unless already changed)
-            if ($rendezVousId->getDoctorId() === $this) {
-                $rendezVousId->setDoctorId(null);
+            if ($rendezVousId->getDoctor() === $this) {
+                $rendezVousId->setDoctor(null);
             }
         }
 

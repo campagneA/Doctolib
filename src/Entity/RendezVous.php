@@ -57,36 +57,36 @@ class RendezVous
         return $this;
     }
 
-    public function getPatientId(): ?Patient
+    public function getPatient(): ?Patient
     {
         return $this->Patient;
     }
 
-    public function setPatientId(?Patient $Patient): self
+    public function setPatient(?Patient $Patient): self
     {
         $this->Patient = $Patient;
 
         return $this;
     }
 
-    public function getDoctorId(): ?Doctor
+    public function getDoctor(): ?Doctor
     {
         return $this->Doctor;
     }
 
-    public function setDoctorId(?Doctor $Doctor): self
+    public function setDoctor(?Doctor $Doctor): self
     {
         $this->Doctor = $Doctor;
 
         return $this;
     }
 
-    public function getCabinetId(): ?Cabinet
+    public function getCabinet(): ?Cabinet
     {
         return $this->Cabinet;
     }
 
-    public function setCabinetId(?Cabinet $Cabinet): self
+    public function setCabinet(?Cabinet $Cabinet): self
     {
         $this->Cabinet = $Cabinet;
 

@@ -86,7 +86,7 @@ class Patient
     private $telephone;
 
     /**
-     * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Patient_Id")
+     * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Patient")
      */
     private $rendezVousId;
 
@@ -225,7 +225,7 @@ class Patient
     {
         if (!$this->rendezVousId->contains($rendezVousId)) {
             $this->rendezVousId[] = $rendezVousId;
-            $rendezVousId->setPatientId($this);
+            $rendezVousId->setPatient($this);
         }
 
         return $this;
@@ -235,8 +235,8 @@ class Patient
     {
         if ($this->rendezVousId->removeElement($rendezVousId)) {
             // set the owning side to null (unless already changed)
-            if ($rendezVousId->getPatientId() === $this) {
-                $rendezVousId->setPatientId(null);
+            if ($rendezVousId->getPatient() === $this) {
+                $rendezVousId->setPatient(null);
             }
         }
 

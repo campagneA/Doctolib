@@ -20,7 +20,6 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
         '92c8763cd6170fce6fcfe7e26b4e8c10' => __DIR__ . '/..' . '/symfony/phpunit-bridge/bootstrap.php',
         '6a47392539ca2329373e0d33e1dba053' => __DIR__ . '/..' . '/symfony/polyfill-intl-icu/bootstrap.php',
         '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
-        '7e9bd612cc444b3eed788ebbe46263a0' => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -93,6 +92,7 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
             'Symfony\\Component\\Cache\\' => 24,
             'Symfony\\Component\\BrowserKit\\' => 29,
             'Symfony\\Component\\Asset\\' => 24,
+            'Symfony\\Bundle\\WebServerBundle\\' => 31,
             'Symfony\\Bundle\\WebProfilerBundle\\' => 33,
             'Symfony\\Bundle\\TwigBundle\\' => 26,
             'Symfony\\Bundle\\SecurityBundle\\' => 30,
@@ -129,8 +129,6 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
         'L' => 
         array (
             'Liip\\TestFixturesBundle\\' => 24,
-            'Laminas\\ZendFrameworkBridge\\' => 28,
-            'Laminas\\EventManager\\' => 21,
             'Laminas\\Code\\' => 13,
         ),
         'F' => 
@@ -404,6 +402,10 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
         array (
             0 => __DIR__ . '/..' . '/symfony/asset',
         ),
+        'Symfony\\Bundle\\WebServerBundle\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/symfony/web-server-bundle',
+        ),
         'Symfony\\Bundle\\WebProfilerBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/symfony/web-profiler-bundle',
@@ -499,14 +501,6 @@ class ComposerStaticInit8f6385613ca4fdd0304678050b126a62
         'Liip\\TestFixturesBundle\\' => 
         array (
             0 => __DIR__ . '/..' . '/liip/test-fixtures-bundle/src',
-        ),
-        'Laminas\\ZendFrameworkBridge\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laminas/laminas-zendframework-bridge/src',
-        ),
-        'Laminas\\EventManager\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/laminas/laminas-eventmanager/src',
         ),
         'Laminas\\Code\\' => 
         array (

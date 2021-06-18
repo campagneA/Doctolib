@@ -10,7 +10,7 @@ if (in_array(PHP_SAPI, ['cli', 'phpdbg'], true)) {
 }
 
 require dirname(__DIR__, 3).''.\DIRECTORY_SEPARATOR.'vendor/autoload.php';
-require __DIR__.'/ContainerXTYcBkP/srcApp_KernelTestDebugContainer.php';
+require __DIR__.'/Container8xzGsYR/srcApp_KernelTestDebugContainer.php';
 
 $classes = [];
 $classes[] = 'Symfony\Bundle\FrameworkBundle\FrameworkBundle';
@@ -24,6 +24,7 @@ $classes[] = 'Symfony\Bundle\SecurityBundle\SecurityBundle';
 $classes[] = 'Twig\Extra\TwigExtraBundle\TwigExtraBundle';
 $classes[] = 'Doctrine\Bundle\FixturesBundle\DoctrineFixturesBundle';
 $classes[] = 'Liip\TestFixturesBundle\LiipTestFixturesBundle';
+$classes[] = 'FOS\RestBundle\FOSRestBundle';
 $classes[] = 'Symfony\Component\HttpClient\TraceableHttpClient';
 $classes[] = 'Symfony\Contracts\HttpClient\HttpClientInterface';
 $classes[] = 'Symfony\Component\HttpClient\HttpClient';
@@ -242,6 +243,16 @@ $classes[] = 'Symfony\Component\Form\Extension\Validator\Type\SubmitTypeValidato
 $classes[] = 'Symfony\Component\Form\Extension\Validator\Type\UploadValidatorExtension';
 $classes[] = 'Symfony\Bridge\Doctrine\Form\DoctrineOrmTypeGuesser';
 $classes[] = 'Symfony\Component\Form\Extension\Validator\ValidatorTypeGuesser';
+$classes[] = 'FOS\RestBundle\Request\RequestBodyParamConverter';
+$classes[] = 'FOS\RestBundle\EventListener\FormatListener';
+$classes[] = 'FOS\RestBundle\Negotiation\FormatNegotiator';
+$classes[] = 'FOS\RestBundle\EventListener\ParamFetcherListener';
+$classes[] = 'FOS\RestBundle\Request\ParamFetcher';
+$classes[] = 'FOS\RestBundle\Request\ParamReader';
+$classes[] = 'FOS\RestBundle\Serializer\Normalizer\FormErrorNormalizer';
+$classes[] = 'FOS\RestBundle\Serializer\SymfonySerializerAdapter';
+$classes[] = 'FOS\RestBundle\View\ViewHandler';
+$classes[] = 'FOS\RestBundle\EventListener\ViewResponseListener';
 $classes[] = 'Symfony\Component\HttpKernel\DependencyInjection\LazyLoadingFragmentHandler';
 $classes[] = 'Symfony\Component\HttpKernel\Fragment\InlineFragmentRenderer';
 $classes[] = 'Sensio\Bundle\FrameworkExtraBundle\Request\ArgumentNameConverter';
