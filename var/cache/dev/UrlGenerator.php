@@ -16,4 +16,7 @@ return [
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token'], ['text', '/_profiler']], [], []],
     'app_doctor_index' => [[], ['_controller' => 'App\\Controller\\DoctorController::index'], [], [['text', '/doctors']], [], []],
+    'app_patients_findall' => [[], ['_controller' => 'App\\Controller\\PatientsController::findAll'], [], [['text', '/patients']], [], []],
+    'app_patients_find' => [['id'], ['_controller' => 'App\\Controller\\PatientsController::find'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/patients']], [], []],
+    'app_patients_newpatient' => [[], ['_controller' => 'App\\Controller\\PatientsController::newPatient'], [], [['text', '/patients']], [], []],
 ];

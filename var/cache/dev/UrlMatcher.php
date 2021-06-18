@@ -14,6 +14,10 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/doctors' => [[['_route' => 'app_doctor_index', '_controller' => 'App\\Controller\\DoctorController::index'], null, ['GET' => 0], null, false, false, null]],
+        '/patients' => [
+            [['_route' => 'app_patients_findall', '_controller' => 'App\\Controller\\PatientsController::findAll'], null, ['GET' => 0], null, false, false, null],
+            [['_route' => 'app_patients_newpatient', '_controller' => 'App\\Controller\\PatientsController::newPatient'], null, ['POST' => 0], null, false, false, null],
+        ],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -32,6 +36,7 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
+                .'|/patients/([^/]++)(*:187)'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -41,8 +46,9 @@ return [
         116 => [[['_route' => '_profiler_router', '_controller' => 'web_profiler.controller.router::panelAction'], ['token'], null, null, false, false, null]],
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
-        159 => [
-            [['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null],
+        159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
+        187 => [
+            [['_route' => 'app_patients_find', '_controller' => 'App\\Controller\\PatientsController::find'], ['id'], ['GET' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

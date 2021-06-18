@@ -47,9 +47,9 @@ class RendezVousFixture extends Fixture
 
         $rdv = new RendezVous();
         $rdv->setDate(date_create('1999-10-11'));
-        $rdv->setPatientId($patient);
-        $rdv->setDoctorId($doctor);
-        $rdv->setCabinetId($cabinet);
+        $rdv->setPatient($patient);
+        $rdv->setDoctor($doctor);
+        $rdv->setCabinet($cabinet);
 
         $manager->persist($rdv);
 
