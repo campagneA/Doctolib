@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\DTO\PatientDTO;
 use App\Entity\Patient;
+use App\Mapper\PatientMapper;
 use FOS\RestBundle\View\View;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
@@ -17,28 +19,32 @@ class PatientsController extends AbstractFOSRestController
      */
     public function findAll()
     {
-
-        $Patients = $this->getDoctrine()->getRepository(Patient::class)->findAll();
-
-        return View::create($Patients, 200);
+        $patients = $this->getDoctrine()->getRepository(Patient::class)->findAll();
+        $patientDTOs = [];
+        foreach ($patients as $patient) {
+            $mapper = new PatientMapper;
+            $patientDTO = $mapper->convertPatientEntityToPatientDTO($patient);
+            $patientDTOs[] = $patientDTO;
+        }
+        return View::create($patientDTOs, 200);
     }
 
     /**
      * @Get("/patients/{id}")
      */
-    public function find(Patient $patient)
+    public function find(PatientDTO $patientDTO)
     {
-        return View::create($patient, 200, ['Content-Type' => 'application/json']);
+        return View::create($patientDTO, 200, ['Content-Type' => 'application/json']);
     }
 
     /**
      * @Post("/patients")
      * @ParamConverter("patient", converter="fos_rest.request_body")
      */
-    public function newPatient(Patient $patient)
+    public function newPatient(PatientDTO $patientDTO)
     {
         $manager = $this->getDoctrine()->getManager();
-        $manager->persist($patient);
+        $manager->persist($patientDTO);
         $manager->flush();
         return View::create(null, 200);
     }
@@ -46,10 +52,10 @@ class PatientsController extends AbstractFOSRestController
     /**
      * @Delete("/patients/{id}")
      */
-    public function deletePatient(Patient $patient)
+    public function deletePatient(PatientDTO $patientDTO)
     {
         $manager = $this->getDoctrine()->getManager();
-        $manager->remove($patient);
+        $manager->remove($patientDTO);
         $manager->flush();
         return View::create(null, 200);
     }

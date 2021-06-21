@@ -13,6 +13,10 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/cabinets' => [
+            [['_route' => 'app_cabinets_findall', '_controller' => 'App\\Controller\\CabinetsController::findAll'], null, ['GET' => 0], null, false, false, null],
+            [['_route' => 'app_cabinets_newcabinet', '_controller' => 'App\\Controller\\CabinetsController::newcabinet'], null, ['POST' => 0], null, false, false, null],
+        ],
         '/doctors' => [[['_route' => 'app_doctor_index', '_controller' => 'App\\Controller\\DoctorController::index'], null, ['GET' => 0], null, false, false, null]],
         '/patients' => [
             [['_route' => 'app_patients_findall', '_controller' => 'App\\Controller\\PatientsController::findAll'], null, ['GET' => 0], null, false, false, null],
@@ -40,11 +44,14 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/patients/([^/]++)(?'
+                .'|/cabinets/([^/]++)(?'
                     .'|(*:190)'
                 .')'
+                .'|/patients/([^/]++)(?'
+                    .'|(*:220)'
+                .')'
                 .'|/rendezvous/([^/]++)(?'
-                    .'|(*:222)'
+                    .'|(*:252)'
                 .')'
             .')/?$}sD',
     ],
@@ -57,10 +64,14 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         190 => [
+            [['_route' => 'app_cabinets_find', '_controller' => 'App\\Controller\\CabinetsController::find'], ['id'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'app_cabinets_deletecabinet', '_controller' => 'App\\Controller\\CabinetsController::deletecabinet'], ['id'], ['DELETE' => 0], null, false, true, null],
+        ],
+        220 => [
             [['_route' => 'app_patients_find', '_controller' => 'App\\Controller\\PatientsController::find'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'app_patients_deletepatient', '_controller' => 'App\\Controller\\PatientsController::deletePatient'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        222 => [
+        252 => [
             [['_route' => 'app_rendezvous_find', '_controller' => 'App\\Controller\\RendezVousController::find'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'app_rendezvous_delete', '_controller' => 'App\\Controller\\RendezVousController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'app_rendezvous_deleterendezvous', '_controller' => 'App\\Controller\\RendezVousController::deleteRendezVous'], ['id'], ['DELETE' => 0], null, false, true, null],

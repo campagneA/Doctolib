@@ -357,6 +357,13 @@
     <service id="kernel" class="App\Kernel" public="true" synthetic="true">
       <tag name="routing.route_loader"/>
     </service>
+    <service id="App\Controller\CabinetsController" class="App\Controller\CabinetsController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.hyz4CBf.App\Controller\CabinetsController"/>
+      </call>
+    </service>
     <service id="App\Controller\DoctorController" class="App\Controller\DoctorController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -378,6 +385,9 @@
         <argument type="service" id=".service_locator.hyz4CBf.App\Controller\RendezVousController"/>
       </call>
     </service>
+    <service id="App\DTO\CabinetDTO" class="App\DTO\CabinetDTO" autowire="true" autoconfigure="true"/>
+    <service id="App\DTO\PatientDTO" class="App\DTO\PatientDTO" autowire="true" autoconfigure="true"/>
+    <service id="App\DTO\RendezVousDTO" class="App\DTO\RendezVousDTO" autowire="true" autoconfigure="true"/>
     <service id="App\DataFixtures\AppFixtures" class="App\DataFixtures\AppFixtures" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
     </service>
@@ -396,6 +406,8 @@
     <service id="App\DataFixtures\SpecialityFixture" class="App\DataFixtures\SpecialityFixture" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
     </service>
+    <service id="App\Mapper\CabinetMapper" class="App\Mapper\CabinetMapper" autowire="true" autoconfigure="true"/>
+    <service id="App\Mapper\PatientMapper" class="App\Mapper\PatientMapper" autowire="true" autoconfigure="true"/>
     <service id="App\Repository\CabinetRepository" class="App\Repository\CabinetRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -5158,6 +5170,9 @@
         <argument>server:status</argument>
       </call>
     </service>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CabinetsController" class="App\Controller\CabinetsController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CabinetsController" class="App\Controller\CabinetsController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\CabinetsController" class="App\Controller\CabinetsController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\DoctorController" class="App\Controller\DoctorController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\DoctorController" class="App\Controller\DoctorController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\DoctorController" class="App\Controller\DoctorController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5468,16 +5483,22 @@
         <argument>make:migration</argument>
       </call>
     </service>
+    <service id=".service_locator.HelwmfV" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="cabinetDTO" type="service_closure" id="App\DTO\CabinetDTO"/>
+      </argument>
+    </service>
     <service id=".service_locator.RGIiAl4" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="viewhandler" type="service_closure" id="fos_rest.view_handler.default"/>
       </argument>
     </service>
-    <service id=".service_locator.aTufDW7" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.9UeOYrZ" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
-        <argument key="patient" type="service_closure" id=".errored..service_locator.aTufDW7.App\Entity\Patient"/>
+        <argument key="patientDTO" type="service_closure" id="App\DTO\PatientDTO"/>
       </argument>
     </service>
     <service id=".service_locator.FDnWv_J" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
@@ -5486,23 +5507,31 @@
         <argument key="rendezVous" type="service_closure" id=".errored..service_locator.FDnWv_J.App\Entity\RendezVous"/>
       </argument>
     </service>
-    <service id=".service_locator.bw3voe8" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+    <service id=".service_locator.eJfQQd1" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\CabinetsController::deletecabinet" type="service_closure" id=".service_locator.HelwmfV"/>
+        <argument key="App\Controller\CabinetsController::find" type="service_closure" id=".service_locator.HelwmfV"/>
+        <argument key="App\Controller\CabinetsController::newcabinet" type="service_closure" id=".service_locator.HelwmfV"/>
+        <argument key="App\Controller\CabinetsController::setViewHandler" type="service_closure" id=".service_locator.RGIiAl4"/>
         <argument key="App\Controller\DoctorController::setViewHandler" type="service_closure" id=".service_locator.RGIiAl4"/>
-        <argument key="App\Controller\PatientsController::deletePatient" type="service_closure" id=".service_locator.aTufDW7"/>
-        <argument key="App\Controller\PatientsController::find" type="service_closure" id=".service_locator.aTufDW7"/>
-        <argument key="App\Controller\PatientsController::newPatient" type="service_closure" id=".service_locator.aTufDW7"/>
+        <argument key="App\Controller\PatientsController::deletePatient" type="service_closure" id=".service_locator.9UeOYrZ"/>
+        <argument key="App\Controller\PatientsController::find" type="service_closure" id=".service_locator.9UeOYrZ"/>
+        <argument key="App\Controller\PatientsController::newPatient" type="service_closure" id=".service_locator.9UeOYrZ"/>
         <argument key="App\Controller\PatientsController::setViewHandler" type="service_closure" id=".service_locator.RGIiAl4"/>
         <argument key="App\Controller\RendezVousController::delete" type="service_closure" id=".service_locator.FDnWv_J"/>
         <argument key="App\Controller\RendezVousController::deleteRendezVous" type="service_closure" id=".service_locator.FDnWv_J"/>
         <argument key="App\Controller\RendezVousController::find" type="service_closure" id=".service_locator.FDnWv_J"/>
         <argument key="App\Controller\RendezVousController::newRendezVous" type="service_closure" id=".service_locator.FDnWv_J"/>
         <argument key="App\Controller\RendezVousController::setViewHandler" type="service_closure" id=".service_locator.RGIiAl4"/>
+        <argument key="App\Controller\CabinetsController:deletecabinet" type="service_closure" id=".service_locator.HelwmfV"/>
+        <argument key="App\Controller\CabinetsController:find" type="service_closure" id=".service_locator.HelwmfV"/>
+        <argument key="App\Controller\CabinetsController:newcabinet" type="service_closure" id=".service_locator.HelwmfV"/>
+        <argument key="App\Controller\CabinetsController:setViewHandler" type="service_closure" id=".service_locator.RGIiAl4"/>
         <argument key="App\Controller\DoctorController:setViewHandler" type="service_closure" id=".service_locator.RGIiAl4"/>
-        <argument key="App\Controller\PatientsController:deletePatient" type="service_closure" id=".service_locator.aTufDW7"/>
-        <argument key="App\Controller\PatientsController:find" type="service_closure" id=".service_locator.aTufDW7"/>
-        <argument key="App\Controller\PatientsController:newPatient" type="service_closure" id=".service_locator.aTufDW7"/>
+        <argument key="App\Controller\PatientsController:deletePatient" type="service_closure" id=".service_locator.9UeOYrZ"/>
+        <argument key="App\Controller\PatientsController:find" type="service_closure" id=".service_locator.9UeOYrZ"/>
+        <argument key="App\Controller\PatientsController:newPatient" type="service_closure" id=".service_locator.9UeOYrZ"/>
         <argument key="App\Controller\PatientsController:setViewHandler" type="service_closure" id=".service_locator.RGIiAl4"/>
         <argument key="App\Controller\RendezVousController:delete" type="service_closure" id=".service_locator.FDnWv_J"/>
         <argument key="App\Controller\RendezVousController:deleteRendezVous" type="service_closure" id=".service_locator.FDnWv_J"/>
@@ -5818,6 +5847,12 @@
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
     </service>
+    <service id=".service_locator.hyz4CBf.App\Controller\CabinetsController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
+      <tag name="container.service_locator_context" id="App\Controller\CabinetsController"/>
+      <argument>App\Controller\CabinetsController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.hyz4CBf" method="withContext"/>
+    </service>
     <service id=".service_locator.hyz4CBf.App\Controller\DoctorController" class="Symfony\Component\DependencyInjection\ServiceLocator" public="false">
       <tag name="container.service_locator_context" id="App\Controller\DoctorController"/>
       <argument>App\Controller\DoctorController</argument>
@@ -5982,12 +6017,12 @@
       <argument type="service" id="security.token_storage"/>
     </service>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver" public="false">
-      <argument type="service" id=".service_locator.bw3voe8"/>
+      <argument type="service" id=".service_locator.eJfQQd1"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver" public="false"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver" public="false"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver" public="false">
-      <argument type="service" id=".service_locator.bw3voe8"/>
+      <argument type="service" id=".service_locator.eJfQQd1"/>
     </service>
     <service id=".debug.http_client.inner" class="Symfony\Contracts\HttpClient\HttpClientInterface" public="false">
       <argument type="collection"/>
@@ -5997,7 +6032,6 @@
       </call>
       <factory class="Symfony\Component\HttpClient\HttpClient" method="create"/>
     </service>
-    <service id=".errored..service_locator.aTufDW7.App\Entity\Patient" class="App\Entity\Patient"/>
     <service id=".errored..service_locator.FDnWv_J.App\Entity\RendezVous" class="App\Entity\RendezVous"/>
     <service id="console.command_loader" class="Symfony\Component\Console\CommandLoader\ContainerCommandLoader" public="true">
       <argument type="service" id=".service_locator.npLK9dQ"/>
@@ -6396,7 +6430,7 @@
     <service id="fos_rest.view_handler" alias="fos_rest.view_handler.default" public="true"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.CmORmuK" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem" public="false"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.bw3voe8"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.eJfQQd1"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
     <service id="Psr\Log\LoggerInterface $consoleLogger" alias="monolog.logger.console"/>
