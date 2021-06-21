@@ -85,10 +85,10 @@ class Patient
      */
     private $telephone;
 
-    // /**
-    //  * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Patient")
-    //  */
-    // private $rendezVousId;
+    /**
+     * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Patient")
+     */
+    private $rendezVousId;
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -103,6 +103,13 @@ class Patient
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(Int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getNom(): ?string
@@ -221,27 +228,27 @@ class Patient
     //     return $this->rendezVousId;
     // }
 
-    // public function addRendezVousId(RendezVous $rendezVousId): self
-    // {
-    //     if (!$this->rendezVousId->contains($rendezVousId)) {
-    //         $this->rendezVousId[] = $rendezVousId;
-    //         $rendezVousId->setPatient($this);
-    //     }
+    public function addRendezVousId(RendezVous $rendezVousId): self
+    {
+        if (!$this->rendezVousId->contains($rendezVousId)) {
+            $this->rendezVousId[] = $rendezVousId;
+            $rendezVousId->setPatient($this);
+        }
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // public function removeRendezVousId(RendezVous $rendezVousId): self
-    // {
-    //     if ($this->rendezVousId->removeElement($rendezVousId)) {
-    //         // set the owning side to null (unless already changed)
-    //         if ($rendezVousId->getPatient() === $this) {
-    //             $rendezVousId->setPatient(null);
-    //         }
-    //     }
+    public function removeRendezVousId(RendezVous $rendezVousId): self
+    {
+        if ($this->rendezVousId->removeElement($rendezVousId)) {
+            // set the owning side to null (unless already changed)
+            if ($rendezVousId->getPatient() === $this) {
+                $rendezVousId->setPatient(null);
+            }
+        }
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
     public function getPassword(): ?string
     {

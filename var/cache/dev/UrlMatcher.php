@@ -18,6 +18,10 @@ return [
             [['_route' => 'app_patients_findall', '_controller' => 'App\\Controller\\PatientsController::findAll'], null, ['GET' => 0], null, false, false, null],
             [['_route' => 'app_patients_newpatient', '_controller' => 'App\\Controller\\PatientsController::newPatient'], null, ['POST' => 0], null, false, false, null],
         ],
+        '/rendezvous' => [
+            [['_route' => 'app_rendezvous_findall', '_controller' => 'App\\Controller\\RendezVousController::findAll'], null, ['GET' => 0], null, false, false, null],
+            [['_route' => 'app_rendezvous_newrendezvous', '_controller' => 'App\\Controller\\RendezVousController::newRendezVous'], null, ['POST' => 0], null, false, false, null],
+        ],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -36,7 +40,12 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/patients/([^/]++)(*:187)'
+                .'|/patients/([^/]++)(?'
+                    .'|(*:190)'
+                .')'
+                .'|/rendezvous/([^/]++)(?'
+                    .'|(*:222)'
+                .')'
             .')/?$}sD',
     ],
     [ // $dynamicRoutes
@@ -47,8 +56,14 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        187 => [
+        190 => [
             [['_route' => 'app_patients_find', '_controller' => 'App\\Controller\\PatientsController::find'], ['id'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'app_patients_deletepatient', '_controller' => 'App\\Controller\\PatientsController::deletePatient'], ['id'], ['DELETE' => 0], null, false, true, null],
+        ],
+        222 => [
+            [['_route' => 'app_rendezvous_find', '_controller' => 'App\\Controller\\RendezVousController::find'], ['id'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'app_rendezvous_delete', '_controller' => 'App\\Controller\\RendezVousController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
+            [['_route' => 'app_rendezvous_deleterendezvous', '_controller' => 'App\\Controller\\RendezVousController::deleteRendezVous'], ['id'], ['DELETE' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

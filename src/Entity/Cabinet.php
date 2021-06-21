@@ -47,7 +47,7 @@ class Cabinet
     private $postal;
 
     /**
-     * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Cabinet_Id")
+     * @ORM\OneToMany(targetEntity=RendezVous::class, mappedBy="Cabinet")
      */
     private $rendezVousId;
 
@@ -64,6 +64,13 @@ class Cabinet
     public function getId(): ?int
     {
         return $this->id;
+    }
+
+    public function setId(Int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
     }
 
     public function getStreet(): ?string
@@ -114,19 +121,19 @@ class Cabinet
         return $this;
     }
 
-    /**
-     * @return Collection|RendezVous[]
-     */
-    public function getRendezVousId(): Collection
-    {
-        return $this->rendezVousId;
-    }
+    // /**
+    //  * @return Collection|RendezVous[]
+    //  */
+    // public function getRendezVousId(): Collection
+    // {
+    //     return $this->rendezVousId;
+    // }
 
     public function addRendezVousId(RendezVous $rendezVousId): self
     {
         if (!$this->rendezVousId->contains($rendezVousId)) {
             $this->rendezVousId[] = $rendezVousId;
-            $rendezVousId->setCabinetId($this);
+            $rendezVousId->setCabinet($this);
         }
 
         return $this;
@@ -136,8 +143,8 @@ class Cabinet
     {
         if ($this->rendezVousId->removeElement($rendezVousId)) {
             // set the owning side to null (unless already changed)
-            if ($rendezVousId->getCabinetId() === $this) {
-                $rendezVousId->setCabinetId(null);
+            if ($rendezVousId->getCabinet() === $this) {
+                $rendezVousId->setCabinet(null);
             }
         }
 

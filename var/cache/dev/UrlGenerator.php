@@ -19,4 +19,10 @@ return [
     'app_patients_findall' => [[], ['_controller' => 'App\\Controller\\PatientsController::findAll'], [], [['text', '/patients']], [], []],
     'app_patients_find' => [['id'], ['_controller' => 'App\\Controller\\PatientsController::find'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/patients']], [], []],
     'app_patients_newpatient' => [[], ['_controller' => 'App\\Controller\\PatientsController::newPatient'], [], [['text', '/patients']], [], []],
+    'app_patients_deletepatient' => [['id'], ['_controller' => 'App\\Controller\\PatientsController::deletePatient'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/patients']], [], []],
+    'app_rendezvous_findall' => [[], ['_controller' => 'App\\Controller\\RendezVousController::findAll'], [], [['text', '/rendezvous']], [], []],
+    'app_rendezvous_find' => [['id'], ['_controller' => 'App\\Controller\\RendezVousController::find'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/rendezvous']], [], []],
+    'app_rendezvous_delete' => [['id'], ['_controller' => 'App\\Controller\\RendezVousController::delete'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/rendezvous']], [], []],
+    'app_rendezvous_newrendezvous' => [[], ['_controller' => 'App\\Controller\\RendezVousController::newRendezVous'], [], [['text', '/rendezvous']], [], []],
+    'app_rendezvous_deleterendezvous' => [['id'], ['_controller' => 'App\\Controller\\RendezVousController::deleteRendezVous'], [], [['variable', '/', '[^/]++', 'id'], ['text', '/rendezvous']], [], []],
 ];

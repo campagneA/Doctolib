@@ -50,6 +50,13 @@ class Doctor
         return $this->id;
     }
 
+    public function setId(Int $id): self
+    {
+        $this->id = $id;
+
+        return $this;
+    }
+
     public function getFirstName(): ?string
     {
         return $this->firstName;
@@ -74,13 +81,13 @@ class Doctor
         return $this;
     }
 
-    /**
-     * @return Collection|RendezVous[]
-     */
-    public function getRendezVousId(): Collection
-    {
-        return $this->RendezVousId;
-    }
+    // /**
+    //  * @return Collection|RendezVous[]
+    //  */
+    // public function getRendezVousId(): Collection
+    // {
+    //     return $this->RendezVousId;
+    // }
 
     public function addRendezVousId(RendezVous $rendezVousId): self
     {
