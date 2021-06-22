@@ -2,6 +2,7 @@
 
 namespace App\Service;
 
+use App\Mapper\PatientMapper;
 use App\Repository\PatientRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -24,7 +25,14 @@ class PatientService
 
     public function findAll()
     {
-        return $this->PatientRepository->findAll();
+        $patients = $this->patientRepository->findAll();
+        $patientDTOs = [];
+        foreach ($patients as $patient) {
+            $mapper = new PatientMapper();
+            $patientDTO = $mapper->convertPatientEntityToPatientDTO($patient);
+            $patientDTOs[] = $patientDTO;
+        }
+        return $patientDTOs;
     }
 
     public function find($id)

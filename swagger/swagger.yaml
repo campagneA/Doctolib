@@ -1,0 +1,77 @@
+openapi: 3.0.0
+info:
+  title: 'Swagger Doctolib'
+  description: 'This is a sample Doctolib server.  You can find out more about Swagger at [http://swagger.io](http://swagger.io) or on [irc.freenode.net, #swagger](http://swagger.io/irc/).'
+  termsOfService: 'http://swagger.io/terms/'
+  contact:
+    email: apiteam@swagger.io
+  license:
+    name: 'Apache 2.0'
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+  version: 1.0.0
+paths:
+  /doctors:
+    post:
+      tags:
+        - 'Ajouter doctor'
+      summary: 'Add a new doctor to the store'
+      operationId: addDoctor
+      responses:
+        '200':
+          description: 'Patient created successfully'
+  /patients:
+    post:
+      tags:
+        - 'Ajouter patient'
+      summary: 'Add a new patient'
+      operationId: create
+      responses:
+        '201':
+          description: 'Patient created successfully'
+components:
+  schemas:
+    DoctorDTO:
+      title: 'Le DoctorDTO'
+      description: 'Le DoctorDTO'
+      required:
+        - id
+      properties:
+        id:
+          title: Id
+          description: 'Id du médecin'
+          format: int
+      type: object
+    PatientDTO:
+      title: 'Le PatientDTO'
+      description: 'Le PatientDTO'
+      required:
+        - nom
+      properties:
+        nom:
+          title: Nom
+          description: 'Nom du patient'
+          format: string
+        prenom:
+          title: Prenom
+          description: 'Prenom du patient'
+          format: string
+        dateNaissance:
+          title: 'Date de naissance'
+          description: 'Date de naissance du patient'
+          format: string
+      type: object
+  requestBodies:
+    PatientDTO:
+      description: 'some blabla'
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/PatientDTO'
+    DoctorDTO:
+      description: 'some blabla'
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/DoctorDTO'

@@ -47,11 +47,16 @@ return [
                 .'|/cabinets/([^/]++)(?'
                     .'|(*:190)'
                 .')'
+                .'|/doctors/(?'
+                    .'|([^/]++)(*:219)'
+                    .'|add(*:230)'
+                    .'|delete/([^/]++)(*:253)'
+                .')'
                 .'|/patients/([^/]++)(?'
-                    .'|(*:220)'
+                    .'|(*:283)'
                 .')'
                 .'|/rendezvous/([^/]++)(?'
-                    .'|(*:252)'
+                    .'|(*:315)'
                 .')'
             .')/?$}sD',
     ],
@@ -67,11 +72,14 @@ return [
             [['_route' => 'app_cabinets_find', '_controller' => 'App\\Controller\\CabinetsController::find'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'app_cabinets_deletecabinet', '_controller' => 'App\\Controller\\CabinetsController::deletecabinet'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        220 => [
+        219 => [[['_route' => 'app_doctor_getid', '_controller' => 'App\\Controller\\DoctorController::getId'], ['id'], ['GET' => 0], null, false, true, null]],
+        230 => [[['_route' => 'app_doctor_adddoctor', '_controller' => 'App\\Controller\\DoctorController::addDoctor'], [], ['POST' => 0], null, false, false, null]],
+        253 => [[['_route' => 'app_doctor_delete', '_controller' => 'App\\Controller\\DoctorController::delete'], ['id'], ['DELETE' => 0], null, false, true, null]],
+        283 => [
             [['_route' => 'app_patients_find', '_controller' => 'App\\Controller\\PatientsController::find'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'app_patients_deletepatient', '_controller' => 'App\\Controller\\PatientsController::deletePatient'], ['id'], ['DELETE' => 0], null, false, true, null],
         ],
-        252 => [
+        315 => [
             [['_route' => 'app_rendezvous_find', '_controller' => 'App\\Controller\\RendezVousController::find'], ['id'], ['GET' => 0], null, false, true, null],
             [['_route' => 'app_rendezvous_delete', '_controller' => 'App\\Controller\\RendezVousController::delete'], ['id'], ['DELETE' => 0], null, false, true, null],
             [['_route' => 'app_rendezvous_deleterendezvous', '_controller' => 'App\\Controller\\RendezVousController::deleteRendezVous'], ['id'], ['DELETE' => 0], null, false, true, null],

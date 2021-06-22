@@ -2,11 +2,44 @@
 
 namespace App\DTO;
 
+use OpenApi\Annotations as OA;
+
+/**
+ * @OA\Schema(
+ *      description="Le PatientDTO",
+ *      title="Le PatientDTO",
+ *      required={"nom"}
+ * )
+ */
+
 class PatientDTO
 {
     private $id;
+    /**
+     * @OA\Property(
+     *     format="string",
+     *     description="Nom du patient",
+     *     title="Nom",
+     * )
+     */
     private $nom;
+
+    /**
+     * @OA\Property(
+     *     format="string",
+     *     description="Prenom du patient",
+     *     title="Prenom",
+     * )
+     */
     private $prenom;
+
+    /**
+     * @OA\Property(
+     *     format="string",
+     *     description="Date de naissance du patient",
+     *     title="Date de naissance",
+     * )
+     */
     private $dateNaissance;
     private $rue;
     private $numeroRue;
@@ -55,6 +88,7 @@ class PatientDTO
         return $this;
     }
 
+
     /**
      * Get the value of prenom
      */
@@ -74,6 +108,7 @@ class PatientDTO
 
         return $this;
     }
+
 
     /**
      * Get the value of dateNaissance
