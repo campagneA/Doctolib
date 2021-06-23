@@ -23,7 +23,23 @@ class DoctorDTO
      * )
      */
     private $id;
+
+    /**
+     * @OA\Property(
+     *     format="string",
+     *     description="Nom du médecin",
+     *     title="First Name",
+     * )
+     */
     private $firstName;
+
+    /**
+     * @OA\Property(
+     *     format="string",
+     *     description="Prenom du médecin",
+     *     title="Last Name",
+     * )
+     */
     private $lastName;
 
     /**

@@ -38,6 +38,17 @@ class CabinetsController extends AbstractFOSRestController
     }
 
     /**
+     * 
+     * @OA\Post(
+     *     path="/cabinets",
+     *     tags={"Ajouter cabinet"},
+     *     operationId="addCabinet",
+     *     @OA\Response(
+     *         response=200,
+     *         description="Cabinet created successfully"
+     *     )
+     * )
+     * 
      * @Post("/cabinets")
      * @ParamConverter("cabinet", converter="fos_rest.request_body")
      */

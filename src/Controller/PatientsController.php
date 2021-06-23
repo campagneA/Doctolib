@@ -96,19 +96,3 @@ class PatientsController extends AbstractFOSRestController
         // return View::create(null, 201);
     }
 }
-
-// public function create(Patient $patient)
-// {
-// $manager = $this->getDoctrine()->getManager();
-// $repo = $this->getDoctrine()->getRepository(Medecin::class);
-// if ($repo->find($patient->getMedecin()->getId()) == null) {
-//     $manager->persist($patient->getMedecin());
-// } else {
-//     // faire connaitre medecin a doctrine
-//     $medecin = $repo->find($patient->getMedecin()->getId());
-//     $patient->setMedecin($medecin);
-// }
-// $this->$manager->persist($patient);
-// $manager->flush();
-// return View::create(null, 200);
-// }

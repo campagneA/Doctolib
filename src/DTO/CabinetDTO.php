@@ -2,28 +2,76 @@
 
 namespace App\DTO;
 
+use OpenApi\Annotations as OA;
+
+/**
+ * @OA\Schema(
+ *      description="Le CabinetDTO",
+ *      title="Le CabinetDTO",
+ *      required={"id"}
+ * )
+ */
 class CabinetDTO
 {
+    /**
+     * @OA\Property(
+     *     format="int",
+     *     description="Id du cabinet",
+     *     title="Id",
+     * )
+     */
     private $id;
-    private $street;
-    private $number;
-    private $city;
-    private $postal;
-    private $name;
 
     /**
-     * Get the value of id
+     * @OA\Property(
+     *      format="string",
+     *      description="Rue du cabinet",
+     *      title="Street",
+     * )
      */
+    private $street;
+
+    /**
+     * @OA\Property(
+     *      format="int",
+     *      description="Numero du cabinet",
+     *      title="Numero du cabinet",
+     * )
+     */
+    private $number;
+
+    /**
+     * @OA\Property(
+     *      format="string",
+     *      description="Ville du cabinet",
+     *      title="City",
+     * )
+     */
+    private $city;
+
+    /**
+     * @OA\Property(
+     *      format="int",
+     *      description="Code Postal du cabinet",
+     *      title="Postal",
+     * )
+     */
+    private $postal;
+
+    /**
+     * @OA\Property(
+     *      format="string",
+     *      description="Nom du cabinet",
+     *      title="Name",
+     * )
+     */
+    private $name;
+
+
     public function getId()
     {
         return $this->id;
     }
-
-    /**
-     * Set the value of id
-     *
-     * @return  self
-     */
     public function setId($id)
     {
         $this->id = $id;

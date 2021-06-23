@@ -15,6 +15,13 @@
  *     required=true,
  *     @OA\JsonContent(ref="#/components/schemas/DoctorDTO"),
  * )
+ * 
+ * * @OA\RequestBody(
+ *     request="CabinetDTO",
+ *     description="some blabla",
+ *     required=true,
+ *     @OA\JsonContent(ref="#/components/schemas/DoctorDTO"),
+ * )
  */
 
 /**
